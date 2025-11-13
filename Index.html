@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Group 1</title>
+
+<link rel="icon" href="Chibi.jpg" type="image/jpeg">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&family=Gloria+Hallelujah&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --matcha-light:#c8e9b8;
+  --matcha-mid:#7ba96c;
+  --matcha-dark:#355d36;
+  --matcha-deep:#234425;
+  --nav-highlight:#89c77c;
+  --bg:#FFFBF5;
+  --white:#fff;
+  --contact-color: #ffd700; 
+  
+  --story-text: #fff;
+  --story-accent: #89c77c;
+}
+
+html,body{margin:0;padding:0;overflow-x:hidden;scroll-behavior:smooth;font-family:"Poppins",sans-serif;background:var(--bg);color:var(--matcha-deep);}
+*{box-sizing:border-box;}
+::-webkit-scrollbar{width:0;height:0}
+
+header{
+  position:fixed;top:0;left:0;width:100%;
+  padding:18px 8%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:transparent;transition:.45s;z-index:999;
+}
+header.scrolled{
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(12px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.25);
+}
+.nav-brand{font-size:24px;font-weight:700;color:white;}
+header.scrolled .nav-brand{color:#2f5e3b;}
+nav a{
+  margin-left:22px;color:white;text-decoration:none;
+  font-weight:500;padding:6px 16px;border-radius:30px;
+  transition:.3s;
+}
+nav a.active{background:var(--nav-highlight);color:#244820;transform:translateY(-2px);}
+nav a:not(.contact-link):hover{background:var(--nav-highlight);color:#244820;transform:translateY(-2px);}
+header.scrolled nav a{color:#2f5e3b;}
+header.scrolled nav a.active{background:var(--nav-highlight);color:#244820;}
+header.scrolled nav a:not(.contact-link):hover{background:var(--nav-highlight);color:#244820;}
+
+
+nav a.contact-link {
+    color: var(--contact-color) !important; 
+    background: transparent !important; 
+    font-weight: 700;
+    padding: 6px 16px; 
+    border: 2px solid var(--contact-color); 
+    transition: all 0.3s ease; 
+    transform: none; 
+}
+nav a.contact-link:hover,
+nav a.contact-link.active {
+    background: var(--contact-color) !important; 
+    color: var(--matcha-deep) !important; 
+    transform: translateY(-2px); 
+    border-color: var(--contact-color); 
+}
+header.scrolled nav a.contact-link {
+    color: var(--contact-color) !important;
+    background: transparent !important;
+    border-color: var(--contact-color);
+}
+header.scrolled nav a.contact-link.active,
+header.scrolled nav a.contact-link:hover {
+    background: var(--contact-color) !important;
+    color: var(--matcha-deep) !important;
+}
+
+
+.hero{
+  min-height:100vh;
+  display:flex;align-items:flex-start;
+  padding:18vh 8% 0;
+  background:url("Baghand4k.jpg") center/cover no-repeat;
+  position:relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+  overflow: hidden; 
+}
+.hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.42);}
+.hero-inner{position:relative;z-index:2;max-width:650px;}
+.kicker{color:#c6f5c6;font-family:"Poppins";opacity:0;animation:fadeUp .8s ease forwards .2s;}
+h1{
+  font-family:"Gloria Hallelujah";
+  font-size:2.8rem;color:white;
+  white-space:nowrap;overflow:hidden;width:0;
+  margin-bottom:12px;border-right:3px solid white;
+  animation:type 1.8s steps(30) forwards, blink .8s step-end infinite;
+}
+h1.finished{border-right:0;width:auto;}
+.lead{color:white;font-size:18px;max-width:46ch;line-height:1.55;opacity:0;animation:fadeUp 1s ease forwards 2s;}
+.btn{
+  margin-top:22px;
+  background:var(--nav-highlight);
+  padding:12px 26px;border:none;border-radius:50px;
+  color:#244820;font-weight:600;cursor:pointer;
+  transition:.3s;opacity:0;animation:fadeUp .8s ease forwards 2.1s;
+}
+.btn:hover{transform:translateY(-3px) scale(1.03);background:#7fbf6f;}
+.btn-outline{margin-left:10px;background:transparent;border:2px solid white;color:white;}
+.btn-outline:hover{background:white;color:#244820;}
+
+.hero-wave {
+    position: absolute;
+    bottom: -1px; 
+    left: 0;
+    width: 100%;
+    height: 150px; 
+    background: var(--bg); 
+    z-index: 3;
+    border-radius: 50% 50% 0 0 / 100px 100px 0 0;
+    transform: translateY(100%);
+    transition: none; 
+}
+
+
+/* PRODUCTS */
+.product-showcase{
+  padding: 120px 0 120px;
+  text-align:center;overflow:hidden;position:relative;
+  background:var(--bg);
+}
+.product-showcase h2{
+  font-size:1.9rem;color:var(--matcha-dark);
+  margin:0 auto 20px;
+  border:2px solid var(--matcha-dark);
+  padding:10px 28px;
+  display:inline-block;
+  border-radius:50px;
+  opacity:0;transform:translateY(20px);
+  transition:1s ease;
+  font-family: "Playfair Display", serif;
+}
+.product-showcase h2.show{opacity:1;transform:translateY(0);}
+.product-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:50px;
+  margin: 100px 0;
+  position:relative;min-height:360px;
+}
+.product-row .panel{
+  position:absolute;
+  top: 0; 
+  bottom: 0;
+  left: 0; 
+  width: 50%;
+  
+  background:#f8f8f3;
+  border-radius:22px;
+  z-index:0;
+  opacity:0;
+  transform: translateY(150px);
+  transition: 1.5s cubic-bezier(.25,.8,.25,1);
+}
+.product-row.right .panel {
+  left: auto;
+  right: 0;
+}
+
+.img-box{
+  width:46%;height:360px;
+  border-radius:18px;
+  background-size:cover;background-position:center;
+  z-index:2;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.5s cubic-bezier(.25,.8,.25,1);
+}
+.img-box:hover{transform:scale(1.05);}
+
+.text-box{
+    width:34%;
+    z-index:2;
+    opacity:0;
+    transform:translateY(20px);
+    transition:1.2s ease;
+    text-align: left; 
+}
+.text-box h3{font-size:2rem;color:var(--matcha-dark);margin-bottom:8px;}
+.text-box p{line-height:1.6;color:#444;}
+.product-badge{
+  display:inline-block;
+  font-family:"Playfair Display",serif;
+  font-size:.85rem;color:var(--matcha-mid);
+  letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:8px;padding:4px 14px;border-radius:20px;
+  border:1px solid rgba(123,169,108,0.35);
+  background:rgba(200,233,184,0.18);
+}
+
+.reveal.show .panel{
+  opacity:1;
+  transform: translateY(0);
+}
+.reveal.show .img-box{
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.show .text-box{opacity:1;transform:translateY(0);}
+
+
+/* START: INTEGRATED STORY VIEWER CSS 
+*/
+.viewer {
+  width: 95%; 
+  max-width: 1000px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 0 80px rgba(0, 0, 0, 0.25),
+    inset 0 0 120px rgba(0, 0, 0, 0.15);
+  margin: 40px auto 0;
+  color: var(--story-text);
+  font-family: "Times New Roman", Times, serif;
+  text-align: left;
+}
+.progress-top {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 5px;
+  display: flex;
+  gap: 6px;
+  z-index: 60;
+}
+.progress-seg {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+.progress-seg .fill {
+  height: 100%;
+  width: 0%;
+  background: var(--story-accent);
+  transition: width 0.4s linear;
+}
+.progress-seg.filled .fill,
+.progress-seg.active .fill {
+  width: 100%;
+}
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: var(--story-text);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.slide > * {
+  position: relative;
+  z-index: 2;
+}
+.slide.active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.slide-content {
+  max-width: 65%;
+  margin-bottom: 2rem;
+}
+.slide-meta .title {
+  font-size: 1.6rem; 
+  font-weight: bold;
+  color: var(--story-text);
+  margin-bottom: 0.4rem;
+}
+.slide-content h2 {
+  font-size: 2.5rem; 
+  margin: 0 0 0.5rem 0;
+  color: var(--story-text);
+}
+.slide-content p {
+  font-size: 1.3rem; 
+  line-height: 1.6;
+  margin: 0;
+  color: var(--story-text);
+}
+.click-zone {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 70;
+}
+.zone-left, .zone-right {
+  flex: 1;
+}
+/* END: INTEGRATED STORY VIEWER CSS 
+*/
+
+
+/* HISTORY */
+#history {
+  padding: 120px 8%;
+}
+.history-container{
+  width:100%; 
+  max-width:1200px;margin:0 auto;
+  background:linear-gradient(to bottom right,#f3f9f0,#e6f7e1);
+  border-radius:22px;padding:80px 70px;
+  display:flex;align-items:center;gap:40px;
+  opacity:0;transform:translateY(30px);
+  transition:1.2s ease,transform 0.5s ease;
+}
+.history-container:hover{transform:scale(1.05);}
+.history-container.show{opacity:1;transform:translateY(0);}
+.history-container img{
+  width:45%;border-radius:18px;object-fit:cover;
+  opacity:0;transform:translateY(20px);
+  transition:1.1s ease;
+}
+.history-container.show img{opacity:1;transform:translateY(0);}
+.history-text{width:55%;opacity:0;transform:translateY(20px);transition:1.1s ease .25s;}
+.history-container.show .history-text{opacity:1;transform:translateY(0);}
+.history-container h2{font-family:"Playfair Display";font-size:2.4rem;color:var(--matcha-dark);margin-bottom:18px;}
+.history-container p{font-size:1.15rem;line-height:1.75;color:#2f4f2f;}
+
+/* MEMBERS */
+.team-roles{
+  padding: 150px 8%;
+  display:flex;justify-content:center;align-items:center;
+  background:var(--bg);
+}
+.team-inner{max-width:1100px;display:flex;align-items:center;justify-content:space-between;gap:64px;flex-wrap:wrap;}
+.image-col{flex:0 0 420px;height:420px;display:flex;align-items:center;justify-content:center;perspective:1200px;position:relative;}
+.flip-card{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform 1.1s cubic-bezier(0.22,0.88,0.25,1);
+  cursor:pointer;border-radius:20px;
+  border:4px solid var(--matcha-dark);
+  background:var(--white);
+  transform-origin:center;
+}
+.face{position:absolute;inset:0;border-radius:16px;overflow:hidden;backface-visibility:hidden;}
+.face img{width:100%;height:100%;object-fit:cover;}
+.face.back{transform:rotateY(180deg);}
+.text-col{flex:1 1 520px;max-width:620px;display:flex;flex-direction:column;justify-content:center;gap:16px;}
+.label{font-size:0.95rem;color:var(--matcha-mid);letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+
+.role-title{
+    font-family:"Pacifico",cursive;
+    font-size:52px;
+    line-height:1;
+    color:var(--matcha-deep);
+    
+}
+
+.role-name{font-size:20px;font-weight:500;color:var(--matcha-mid);margin-top:-6px;margin-bottom:4px;}
+.role-desc{margin:0;font-size:18px;line-height:1.8;color:var(--matcha-dark);}
+
+/* Added for Member section fade-out/in effect */
+.fade-in{
+    opacity:1;
+    transform:translateY(0);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(-5px) !important;
+}
+
+
+#video {
+  background: linear-gradient(to top, #f0f7ed, var(--bg)); 
+  padding: 120px 8%;
+  text-align: center;
+  min-height: 300px;
+}
+#video h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem; 
+  color: var(--matcha-deep);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px; 
+}
+#video p {
+  font-family: "Playfair Display", serif; 
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 50px; 
+  line-height: 1.5;
+}
+
+
+.video-container {
+  max-width: 900px;
+  margin: 50px auto 0; 
+  
+  border: 8px solid var(--white); 
+  outline: 1px solid rgba(0, 0, 0, 0.08); 
+  background: var(--matcha-dark); 
+  border-radius: 6px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 42%; 
+  height: 0;
+  
+  
+  opacity: 0;
+  transform: translateY(30px); 
+  
+  transition: opacity 1.1s cubic-bezier(0.22, 0.61, 0.36, 1), transform 1.1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+.video-container iframe, .video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+}
+
+
+.reveal.show .video-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#contact {
+    padding: 100px 8%;
+    background: #f8f8f3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.contact-header {
+    margin-bottom: 60px;
+}
+.contact-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 3.5rem;
+    color: var(--matcha-deep);
+    margin: 0 0 10px;
+}
+.contact-header p {
+    font-size: 1.1rem;
+    color: #555;
+}
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    gap: 40px;
+    text-align: left;
+}
+.contact-form-side {
+    padding: 40px;
+    flex: 1.5;
+    background: var(--white); 
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); 
+}
+.contact-info-side {
+    flex: 1;
+    background: var(--matcha-dark);
+    color: var(--white);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px; 
+}
+.contact-info-side h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+.contact-detail {
+    margin-bottom: 30px;
+}
+.contact-detail p {
+    margin: 0;
+    line-height: 1.6;
+}
+.contact-detail span {
+    font-weight: 600;
+    color: var(--matcha-light);
+    display: block;
+    margin-bottom: 5px;
+}
+.social-links {
+    padding-top: 15px; 
+}
+.social-links a {
+    color: var(--matcha-light);
+    font-size: 1.2rem;
+    margin-right: 20px;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+.social-links a:hover {
+    color: var(--contact-color);
+}
+.contact-form label {
+    display: block;
+    font-weight: 500;
+    color: var(--matcha-deep);
+    margin-bottom: 5px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--matcha-mid);
+    box-shadow: 0 0 5px rgba(123, 169, 108, 0.5);
+}
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+.contact-form button {
+    background: var(--matcha-dark);
+    color: var(--white);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+}
+.contact-form button:hover {
+    background: var(--matcha-mid);
+    transform: translateY(-2px);
+}
+.map-container {
+    width: 100%;
+    margin-top: 25px; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.map-container iframe {
+    width: 100%;
+    height: 250px; 
+    border: 0;
+    display: block;
+}
+/* END: CONTACT SECTION STYLES */
+
+
+@media(max-width:900px){
+  .team-inner{flex-direction:column-reverse;text-align:center;gap:50px;}
+  .image-col{width:340px;height:340px;}
+  .role-title{font-size:42px;}
+  
+  .history-container { flex-direction: column; padding: 50px 30px; }
+  .history-container img, .history-container .history-text { width: 100%; }
+  
+  #video h2 { font-size: 2.2rem; }
+  #video p { font-size: 1rem; }
+
+  /* Contact Responsive */
+  .contact-container { flex-direction: column; }
+  .contact-form-side, .contact-info-side { flex: none; width: 100%; padding: 30px; }
+  .contact-header h2 { font-size: 2.5rem; }
+  
+  /* Map for smaller screens */
+  .map-container iframe {
+      height: 300px;
+  }
+}
+
+/* ADDED MEDIA QUERY FOR EVEN SMALLER SCREENS */
+@media(max-width: 500px) {
+    .role-title {
+        font-size: 36px; 
+        line-height: 1.1; 
+    }
+}
+
+
+@media(max-width:700px){
+  .slide-content h2 {font-size: 1.8rem;} 
+  .slide-content p {font-size: 1.1rem;} 
+  .slide {padding: 1.5rem;}
+  .slide-content {max-width: 80%;}
+  
+  .product-row { flex-direction: column; }
+  .img-box, .text-box { width: 90%; }
+}
+@media(max-width: 600px) {
+  #video {
+    padding: 80px 4%;
+  }
+}
+
+
+
+@keyframes type{to{width:102%;}}
+@keyframes blink{50%{border-color:transparent}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+footer{
+  text-align:center;
+  
+  padding: 60px 40px;
+  font-size:14px;color:#444;
+  background: var(--bg);
+}
+footer .contact-link-footer {
+    display: inline-block;
+    background: var(--contact-color);
+    color: var(--matcha-deep);
+    font-weight: 700;
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+footer .contact-link-footer:hover {
+    background: #ffec85;
+    transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<header id="navbar">
+  <div class="nav-brand">Casa Pandan</div>
+  <nav>
+    <a href="#hero" class="nav-link">Home</a>
+    <a href="#products" class="nav-link">Product</a>
+    <a href="#history" class="nav-link">History</a>
+    <a href="#members" class="nav-link">Members</a>
+    <a href="#video" class="nav-link">Video</a>
+    <a href="#contact" class="nav-link contact-link">Contact</a>
+  </nav>
+</header>
+
+<section id="hero" class="hero">
+  <div class="hero-inner">
+    <div class="kicker"><i>Culture and Traditions</i></div>
+    <h1 id="typed">A Heritage Woven by Hand</h1>
+    <p class="lead"><i>Pandan weaving is a story of patience, artistry, and knowledge passed quietly through generations.</i></p>
+    <a href="#products"><button class="btn">Explore Products</button></a>
+    <a href="#history"><button class="btn btn-outline">Learn the History</button></a>
+  </div>
+  <div class="hero-wave" id="heroWave"></div>
+</section>
+
+<section id="products" class="product-showcase">
+  <h2 id="productTitle">Our pandan product</h2>
+
+  <main class="viewer" id="storyViewer" aria-label="Story viewer">
+    <div class="progress-top" id="progressTop" aria-hidden="true"></div>
+  
+    <section class="slides" id="slides" aria-live="polite">
+      <article class="slide active" data-title="Intro" style="background:url('puring.jpg') center/cover no-repeat;">
+        <div class="slide-meta">
+          <div class="title">Intro</div>
+        </div>
+        <div class="slide-content">
+          <h2>Stories of the Epics</h2>
+          <p>A cultural journey through the Philippines from the artist to the art itself, presented with respect to heritage.</p>
+        </div>
+      </article>
+  
+      <article class="slide" data-title="Bambi" style="background:url('material.jpg') center/cover;">
+        <div class="slide-meta"><div class="title">Our Material</div></div>
+        <div class="slide-content">
+          <h2>Pandan leaves</h2>
+          <p>We only picked the best leaves for our product</p>
+        </div>
+      </article>
+  
+      <article class="slide" data-title="Patience and Care" style="background:url('weaving.jpg') center/cover;">
+        <div class="slide-meta"><div class="title">Patience and Care</div></div>
+        <div class="slide-content">
+          <h2>Pandan weaving</h2>
+          <p>Weaving takes time, effort and care but in the end its worth it.</p>
+        </div>
+      </article>
+  
+      <article class="slide" data-title="Finished Product" style="background:url('PBH2.png') center/cover;">
+        <div class="slide-meta"><div class="title">Finished Product</div></div>
+        <div class="slide-content">
+          <h2>Bambi Lessons & Duty</h2>
+          <p>Concluding with reflection: duty, consequence, and the enduring lessons that shape culture.</p>
+        </div>
+      </article>
+    </section>
+  
+    <div class="click-zone" id="clickZone">
+      <div class="zone-left" id="zoneLeft"></div>
+      <div class="zone-right" id="zoneRight"></div>
+    </div>
+  </main>
+  <div class="product-row reveal right">
+    <div class="panel"></div>
+    <div class="img-box" style="background-image:url('BagHand3.jpg');"></div>
+    <div class="text-box">
+      <h3>Pandan Handbag</h3>
+      <div class="product-badge">Artisan Made</div>
+      <p>Handcrafted from carefully chosen pandan leaves, this artisan-made handbag embodies the perfect blend of traditional Filipino weaving and modern design. Each strand is skillfully woven by local artisans who carry generations of craftsmanship in their hands. The result is a piece that’s both functional and stylish  a reflection of sustainability, creativity, and cultural pride. The pandan handbag transforms a timeless tradition into a contemporary statement, celebrating heritage in every weave.</p>
+    </div>
+  </div>
+
+</section>
+
+<section id="history" class="page">
+  <div class="history-container">
+    <img src="Pandan weaving 3.jpg" alt="Pandan Weaving Tradition">
+    <div class="history-text">
+      <h2>Pandan Weaving: History</h2>
+      <p>Pandan weaving in the Philippines dates back centuries and began as a practical craft using the pandan plant to make mats, baskets, and bags for daily use. Over generations, it evolved into an art form that reflects the creativity and identity of local communities, especially in Samar, Leyte, Palawan, and Bohol. The process involves harvesting, drying, and dyeing pandan leaves before weaving them into intricate patterns. Today, pandan weaving continues to thrive as a symbol of Filipino heritage, blending traditional craftsmanship with modern, sustainable design.</p><br>
+
+    </div>
+  </div>
+</section>
+
+<section id="members" class="team-roles">
+  <div class="team-inner">
+    <div class="image-col">
+      <div class="flip-card" id="flipCard" tabindex="0">
+        <div class="face front">
+          <img src="Jude.jpg">
+        </div>
+        <div class="face back">
+          <img src="placeholder-back-image.jpg">
+        </div>
+      </div>
+    </div>
+    <div class="text-col" aria-live="polite">
+      <div class="label fade-in">Our Core Members</div>
+      <h1 class="role-title fade-in" id="roleTitle">Exhibit Curator</h1>
+      <h3 class="role-name fade-in" id="roleName">Jude William D. Arriola</h3>
+      <p class="role-desc fade-in" id="roleDesc">Curates exhibitions, selects artworks, and ensures the overall aesthetic and storytelling align with the theme.</p>
+    </div>
+  </div>
+</section>
+
+<section id="video" class="page reveal">
+  <h2>The Heritage Film</h2>
+  <p>Dedicated to the weavers the community and the craft that keeps the history of pandan alive.</p>
+  <div class="video-container">
+    <video controls loop preload="auto">
+      <source src="vid.mp4" type="video/mp4">
+      <p>Your browser doesn't support HTML5 video. Please download the file: <a href="vid.mp4">Download Video</a></p>
+    </video>
+  </div>
+</section>
+
+<section id="contact">
+    <div class="contact-header">
+        <h2>Get in Touch with Us</h2>
+        <p>We're here to answer any questions about our products, history, or the art of Pandan weaving.</p>
+    </div>
+    <div class="contact-container">
+        <div class="contact-form-side">
+            <h3>Send a Message</h3>
+            <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Inquiry</button>
+            </form>
+        </div>
+        <div class="contact-info-side">
+            <div>
+                <h3>Contact Information</h3>
+                <div class="contact-detail">
+                    <span>Email Us</span>
+                    <p>info@pandanheritage.com</p>
+                </div>
+                <div class="contact-detail">
+                    <span>Call Us</span>
+                    <p>+63 912 345 6789</p>
+                </div>
+                <div class="contact-detail">
+                    <span>Our Workshop</span>
+                    <p>
+                        2 Pres. Laurel Highway, Darasa,<br>
+                        Tanauan City, Batangas 4232
+                    </p>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.076800760447!2d121.13783787596856!3d14.07252278630773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6f831343714b%3A0x8ec86c071d31a57c!2s2%20Pres.%20Laurel%20Hwy%2C%20Darasa%2C%20Tanauan%20City%2C%204232%20Batangas!5e0!3m2!1sen!2sph!4v1700685600000!5m2!1sen!2sph" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.343c-.456 0-.547.218-.547.535v1.27h2l-.301 2.5h-1.699v6.465h-3v-6.465h-2v-2.5h2v-1.55c0-2.016 1.192-3.136 3.024-3.136.577 0 1.157.085 1.734.164v2.046z"/></svg></a>
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.741 8.524c-.078.687-.732 2.757-1.341 4.378-.328.855-.658 1.701-.987 2.548-.466 1.218-1.163 2.56-2.072 2.548-1.505-.02-1.847-.796-2.884-2.809-1.37-2.673-2.618-5.025-2.628-6.191-.01-.734.45-1.077 1.09-1.077.537 0 .977.302 1.258.749.336.536.502.77 1.053.77.553 0 .717-.234 1.053-.77.307-.492.715-.749 1.259-.749.65 0 1.1-.37 1.1-1.077-.01-1.164-1.258-3.516-2.628-6.188-.415-.815-1.112-2.157-2.071-2.157-1.506 0-1.847 1.165-2.884 3.179-1.37 2.673-2.618 5.025-2.628 6.191-.01.734.45 1.077 1.09 1.077.537 0 .977-.302 1.259-.749.336-.536.502-.77 1.053-.77.553 0 .717.234 1.053.77.307.492.715.749 1.259.749 1.353 0 1.794-1.164 2.831-3.179.351-.689.704-1.375 1.053-2.062.29-.57.876-.94 1.488-.94.032 0 .064.004.095.008z"/></svg></a>
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.059 7.915c-.443-.198-.921-.303-1.428-.303-.523 0-.964.12-1.428.303-.497.198-.82.47-1.026.837-.202.365-.304.81-.304 1.332 0 .445.101.89.303 1.332.206.367.53.64.974.838.497.198.986.303 1.483.303.497 0 .973-.105 1.417-.303.465-.198.807-.47 1.013-.837.206-.365.308-.81.308-1.332 0-.523-.102-.968-.304-1.332-.206-.367-.53-.64-.974-.838z"/></svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    © 2025 Casa Pandan: Pandan Cultural Exhibit
+</footer>
+
+<script>
+/* NAVBAR ACTIVE */
+const sections=document.querySelectorAll("section");
+const links=document.querySelectorAll(".nav-link");
+const navbar=document.getElementById("navbar");
+
+function updateNav(){
+  let scroll=window.scrollY+200;
+  let homeActive = false;
+  
+  // Check for Home link specifically when at the top
+  if (window.scrollY < document.getElementById('hero').offsetHeight - 200) {
+      links.forEach(a => a.classList.remove("active"));
+      document.querySelector('a[href="#hero"]').classList.add("active");
+      homeActive = true;
+  }
+  
+  if (!homeActive) {
+      sections.forEach(sec=>{
+          if(scroll >= sec.offsetTop && scroll < sec.offsetTop + sec.offsetHeight){
+              links.forEach(a=>a.classList.remove("active"));
+              document.querySelector(`a[href="#${sec.id}"]`)?.classList.add("active");
+          }
+      });
+  }
+
+  navbar.classList.toggle("scrolled",window.scrollY>window.innerHeight-90);
+}
+window.addEventListener("scroll",updateNav);
+updateNav(); // **FIX:** Initialize active link on page load
+
+/* HERO TYPING END */
+document.getElementById("typed").addEventListener("animationend",()=>document.getElementById("typed").classList.add("finished"));
+
+/* SCROLL-DRIVEN WAVE EFFECT */
+const heroWave = document.getElementById('heroWave');
+const hero = document.getElementById('hero');
+
+function updateWave() {
+    if (!heroWave || !hero) return;
+
+    const heroHeight = hero.offsetHeight;
+    const scrollPosition = window.scrollY;
+
+    let scrollProgress = scrollPosition;
+
+    if (scrollProgress >= 0 && scrollProgress <= heroHeight) {
+        const progressPercentage = Math.min(scrollProgress / (heroHeight * 0.9), 1);
+        const movement = 100 - (progressPercentage * 100); 
+
+        heroWave.style.transform = `translateY(${movement}%)`;
+    }
+}
+
+window.addEventListener("scroll", updateWave);
+updateWave();
+
+/* REVEAL ON SCROLL */
+const items=document.querySelectorAll(".reveal");
+function reveal(){
+  items.forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight*0.75)el.classList.add("show");
+  });
+  const title=document.getElementById("productTitle");
+  if(title.getBoundingClientRect().top<window.innerHeight*0.8)title.classList.add("show");
+  const historyBlock=document.querySelector(".history-container");
+  if(historyBlock.getBoundingClientRect().top<window.innerHeight*0.85)historyBlock.classList.add("show");
+}
+window.addEventListener("scroll",reveal);
+reveal();
+
+/* MEMBERS FLIP */
+(() => {
+  const roles=[
+    {title:"Exhibit Curator",name:"Jude William D. Arriola",desc:"Curates exhibitions, selects artworks, and ensures the overall aesthetic and storytelling align with the theme.",img:"Jude.jpg"},
+    {title:"Art Agent",name:"Angel Kim B. Ariata",desc:"As our master weaver she designed and created our pandan weaved bag.",img:"Angel.jpg"},
+    {title:"Web Designer",name:"Joseiash Ezekiel D. Briones",desc:"Designs and maintains the team's digital presence, ensuring an elegant and immersive online experience.",img:"brio.jpg"},
+    {title:"Web Designer",name:"Djibril Eleazar R. Villegas",desc:"Made significant contributions through editing and designing our video section",img:"Djibril.jpg"},
+    {title:"Art Agent",name:"Angelo Della Torre",desc:"Creates visual concepts and artistic layouts that highlight the fusion of tradition and modern creativity.",img:"angelo.jpg"}
+  ];
+
+  const flipCard=document.getElementById("flipCard");
+  const frontImg=flipCard.querySelector(".front img");
+  const backImg=flipCard.querySelector(".back img");
+  const roleTitle=document.getElementById("roleTitle");
+  const roleName=document.getElementById("roleName");
+  const roleDesc=document.getElementById("roleDesc");
+  const textElements = [roleTitle, roleName, roleDesc, document.querySelector('.text-col .label')]; // Group all elements
+  let index=0,isFlipped=false,tiltX=0,tiltY=0;
+
+  flipCard.addEventListener("mousemove",e=>{
+    const r=flipCard.getBoundingClientRect(),nx=(e.clientX-r.left)/r.width-0.5,ny=(e.clientY-r.top)/r.height-0.5;
+    const s=18;tiltX=-ny*s;tiltY=nx*s;const base=isFlipped?180:0;
+    flipCard.style.transform=`rotateY(${base+tiltY}deg) rotateX(${tiltX}deg)`;
+  });
+  
+  flipCard.addEventListener("mouseleave",()=>{
+    tiltX=0;tiltY=0;
+    const base=isFlipped?180:0;
+    flipCard.style.transition="transform 0.6s ease";
+    flipCard.style.transform=`rotateY(${base}deg) rotateX(0deg)`;
+    setTimeout(()=>{flipCard.style.transition="transform 1.1s cubic-bezier(0.22,0.88,0.25,1)";},600);
+  });
+  
+  flipCard.addEventListener("click",()=>{
+    if(flipCard.classList.contains("busy")) return;
+    flipCard.classList.add("busy");
+    
+    // 1. Start Fade Out (by adding the new fade-out class)
+    textElements.forEach(e => e.classList.add("fade-out"));
+
+    const nextIndex=(index+1)%roles.length;
+    const next=roles[nextIndex];
+    isFlipped=!isFlipped;
+    const base=isFlipped?180:0;
+
+    // 2. Wait for text to fade out before content change and flip
+    setTimeout(()=>{
+      // 3. Start the flip animation (1.1s transition)
+      flipCard.style.transform=`rotateY(${base+tiltY}deg) rotateX(${tiltX}deg)`;
+
+      // 4. Update the content immediately while mid-flip
+      if(isFlipped)backImg.src=next.img;else frontImg.src=next.img;
+      
+      roleTitle.innerHTML=next.title;
+      roleName.textContent=next.name;
+      roleDesc.textContent=next.desc;
+      index=nextIndex;
+      
+      // 5. Start Fade In (by removing the fade-out class, letting the existing fade-in class take over)
+      setTimeout(()=>{
+        textElements.forEach(e => e.classList.remove("fade-out"));
+      }, 50); 
+      
+      // 6. After the flip animation is mostly done, remove busy class
+      setTimeout(()=>{
+        flipCard.classList.remove("busy");
+      }, 1100); 
+
+    }, 300); // Wait the duration of the text fade-out transition
+  });
+})();
+
+
+/* START: INTEGRATED STORY VIEWER SCRIPT
+*/
+(function(){
+  // Select elements *within* the story viewer to avoid conflicts
+  const storyViewer = document.getElementById('storyViewer');
+  if(!storyViewer) return; // Don't run if viewer isn't on the page
+
+  const slidesEl = storyViewer.querySelectorAll('.slide');
+  const progressTop = storyViewer.querySelector('#progressTop');
+  const zoneLeft = storyViewer.querySelector('#zoneLeft');
+  const zoneRight = storyViewer.querySelector('#zoneRight');
+  let currentIndex = 0;
+
+  function createProgress(n){
+    if(!progressTop) return;
+    progressTop.innerHTML = '';
+    for(let i=0;i<n;i++){
+      const seg=document.createElement('div');
+      seg.className='progress-seg';
+      const fill=document.createElement('div');
+      fill.className='fill';
+      seg.appendChild(fill);
+      progressTop.appendChild(seg);
+    }
+  }
+
+  function updateProgress(index){
+    if(!progressTop) return;
+    const segs=Array.from(progressTop.querySelectorAll('.progress-seg'));
+    segs.forEach((seg,i)=>{
+      const fill=seg.querySelector('.fill');
+      if(i <= index) {
+        fill.style.width='100%';
+      } else {
+        fill.style.width='0%';
+      }
+    });
+  }
+
+  function goTo(index){
+    const newIndex = Math.max(0, Math.min(index, slidesEl.length - 1));
+    slidesEl.forEach((s,i)=> s.classList.toggle('active', i===newIndex));
+    currentIndex = newIndex;
+    updateProgress(currentIndex);
+  }
+
+  if(zoneRight) zoneRight.addEventListener('click',()=>goTo(currentIndex+1));
+  if(zoneLeft) zoneLeft.addEventListener('click',()=>goTo(currentIndex-1));
+
+  function init(){
+    if(slidesEl.length === 0) return; // Stop if no slides
+    createProgress(slidesEl.length);
+    goTo(0);
+  }
+  init();
+})();
+
+</script>
+</body>
+</html>
